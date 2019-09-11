@@ -1,0 +1,17 @@
+{
+  "name": "fauna_learning",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bootstrap_db.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.1.0",
+    "envfile": "^3.0.0",
+    "faunadb": "^2.8.0"
+  }
+}
