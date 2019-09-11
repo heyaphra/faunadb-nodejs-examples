@@ -51,7 +51,7 @@ const createKeys = async () => {
     } catch (e) {
         console.log(e)
     }
-    await fs.writeFile('./.env', envfile.stringifySync(env), () => console.log('Wrote env vars'));
+    await fs.writeFile('./.env', envfile.stringifySync(env), () => console.log('Published environmental variables'));
     return { server: _server.secret, client: _client.secret };
 }
 
