@@ -87,7 +87,6 @@ const createUsers = async function (client) {
             )
         )
         console.log('Created a test user', _user)
-
     } catch (e) {
         console.log(e);
     }
