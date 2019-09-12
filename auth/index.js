@@ -23,7 +23,7 @@ const loginWithEmail = async (email, password) => {
             Login(
                 Match(
                     Index('users_by_email'),
-                    Select(['data', 'email'], Get(user.ref))
+                    Select(['data', 'email'], Get(_user))
                 ), { password }
             )
         );
@@ -56,6 +56,7 @@ const validateCredentials = async (user, password) => {
 }
 
 const revokeAllTokens = async () => {
+    /** Currently not working... */
     try {
         const _res = await client.query(q.Logout(true));
         console.log(_res)
