@@ -36,7 +36,7 @@ const loginWithEmail = async (email, password) => {
 const findUserByEmail = async (email) => {
     try {
         const _res = await client.query(
-            Get(Match(Index('users_by_email'), email))
+            Select(['ref'], Get(Match(Index('users_by_email'), email)))
         );
         return _res;
     } catch (e) {
