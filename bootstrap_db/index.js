@@ -26,6 +26,7 @@ let client = new faunadb.Client({ secret: process.env.FDB_ADMIN_KEY });
 const createDB = async () => {
     try {
         const _db = await client.query(q.CreateDatabase({ name: 'testdb' }))
+        console.log('New DB created:', _db)
     } catch (e) {
         console.log(e);
     }
