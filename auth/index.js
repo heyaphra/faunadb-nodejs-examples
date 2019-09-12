@@ -9,10 +9,8 @@
 
 require('dotenv').config();
 
-const faunadb = require('faunadb'),
-    q = faunadb.query;
-
-const { Login, Select, Get, Match,  Identify, Index } = q;
+const faunadb = require('faunadb');
+const { Login, Select, Get, Match,  Identify, Index } = faunadb.query;
 
 let client = new faunadb.Client({ secret: process.env.FDB_SERVER_KEY });
 
