@@ -10,7 +10,7 @@
 require('dotenv').config();
 
 const faunadb = require('faunadb');
-const { Login, Select, Get, Match,  Identify, Index } = faunadb.query;
+const { Login, Logout, Select, Get, Match, Identify, Index } = faunadb.query;
 
 let client = new faunadb.Client({ secret: process.env.FDB_SERVER_KEY });
 
@@ -54,9 +54,12 @@ const validateCredentials = async (user, password) => {
 }
 
 const revokeAllTokens = async () => {
-    /** Currently not working... */
+    /**
+     * Client must use token generated via login.
+     * It's up to you to store it securely.  
+     * */
     try {
-        const _res = await client.query(q.Logout(true));
+        const _res = await client.query(Logout(true));
         console.log(_res)
     } catch (e) {
         console.log(e)
@@ -70,7 +73,7 @@ const revokeAllTokens = async () => {
 // findUserByEmail('alice@example.com')
 
 /* Logout */
-// revokeAllTokens()
+revokeAllTokens()
 
 /* Get auth status */
 // validateCredentials('alice@example.com', 'secret_password')
