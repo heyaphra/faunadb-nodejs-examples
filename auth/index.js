@@ -53,7 +53,7 @@ const validateCredentials = async (user, password) => {
     }
 }
 
-const revokeAllTokens = async () => {
+const logout = async () => {
     /**
      * Client must use token generated via login.
      * It's up to you to store it securely.  
@@ -73,7 +73,7 @@ const revokeAllTokens = async () => {
 // findUserByEmail('alice@example.com')
 
 /* Logout */
-revokeAllTokens()
+// logout()
 
 /* Get auth status */
 // validateCredentials('alice@example.com', 'secret_password')
