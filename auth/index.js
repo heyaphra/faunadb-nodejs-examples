@@ -49,7 +49,7 @@ const validateCredentials = async (user, password) => {
         const _id = await client.query(
             Identify(Match(Index('users_by_email'), user), password)
         );
-        console.log(id);
+        console.log(_id);
     } catch (e) {
         console.log(e)
     }
