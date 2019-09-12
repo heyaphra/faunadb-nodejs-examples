@@ -46,7 +46,7 @@ const findUserByEmail = async (email) => {
 
 const validateCredentials = async (user, password) => {
     try {
-        const id = await client.query(
+        const _id = await client.query(
             Identify(Match(Index('users_by_email'), user), password)
         );
         console.log(id);
