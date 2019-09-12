@@ -11,6 +11,7 @@ require('dotenv').config();
 
 const faunadb = require('faunadb'),
     q = faunadb.query;
+
 const { Collection, Login, Select, Get, Match, Identity, Identify, Index, Ref } = q;
 
 let client = new faunadb.Client({ secret: process.env.FDB_SERVER_KEY });
@@ -64,7 +65,7 @@ const revokeAllTokens = async () => {
 }
 
 /* Login */
-loginWithEmail('alice@example.com', 'secret password')
+// loginWithEmail('alice@example.com', 'secret password')
 
 /* Find user by email */
 // findUserByEmail('alice@example.com')
@@ -74,9 +75,3 @@ loginWithEmail('alice@example.com', 'secret password')
 
 /* Get auth status */
 // validateCredentials('alice@example.com', 'secret_password')
-
-/*
-{ ref: Ref(Collection("users"), "243253343164563977"),
-  ts: 1568243315800000,
-  data: { email: 'alice@example.com' } }
-*/
