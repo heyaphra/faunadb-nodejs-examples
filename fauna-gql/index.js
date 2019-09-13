@@ -19,12 +19,12 @@ const InMemoryCache = require("apollo-cache-inmemory").InMemoryCache;
 
 const { FDB_ADMIN_KEY: adminKey } = process.env;
 
-const digest = Buffer.from(`${adminKey}:`).toString("base64");
+const digest = Buffer.from(`${adminKey}:`).toString('base64');
 
 /* Create an Apollo Client with the FaunaDB GraphQL endpoint and authorization headers */
 const client = new ApolloClient({
   link: createHttpLink({
-    uri: "https://graphql.fauna.com/graphql",
+    uri: 'https://graphql.fauna.com/graphql',
     headers: {
       Authorization: `Basic ${digest}`
     }
@@ -48,4 +48,4 @@ const createList = async title => {
   console.log(JSON.stringify(_res.data, null, 2));
 };
 
-createList("My Awesome List");
+createList('My Awesome List');
