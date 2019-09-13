@@ -12,3 +12,4 @@ Tasks:
 - [x] Make a script to bootstrap a database
 - [ ] Convert script into a more flexible CLI utility
 - [x] Model a basic user authentication flow
+- [ ] **YOUR IDEA HERE :o)**
