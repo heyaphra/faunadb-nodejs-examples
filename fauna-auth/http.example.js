@@ -1,7 +1,12 @@
 /**
- * Summary: HTTP requests to your database must contain a base-64 digest of the relevant key in the Authorization header.
- * Prerequisites: A Fauna database with an endpoint.
+ * Summary: 
+ *   - Basic example showing HTTP request to a Fauna endpoint
+ * 
+ * Notes:
+ *  - All HTTP requests must be authenticated with a base-64 digest of your relevant key
+ *  - Alternatively, you can use the Bearer authentication scheme and completely forego base-64 encoding
  */
+
 const axios = require("axios");
 
 const example = async token => {

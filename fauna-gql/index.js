@@ -1,7 +1,15 @@
 /**
- * Summary: Basic example showing use of Apollo/GraphQL with FaunaDAB
- * Prerequisites: Get your database up and running - https://docs.fauna.com/fauna/current/start/graphql#query
+ * Summary: 
+ *   - Basic example showing use of Apollo/GraphQL with FaunaDAB
+ * 
+ * Prerequisites: 
+ *   - Get your database up and running - https://docs.fauna.com/fauna/current/start/graphql#query
+ * 
+ * Notes:
+ *  - All HTTP requests must be authenticated with a base-64 digest of your relevant key
+ *  - Alternatively, you can use the Bearer authentication scheme and completely forego base-64 encoding
  */
+
 
 require("dotenv").config();
 const gql = require("graphql-tag");
@@ -11,7 +19,6 @@ const InMemoryCache = require("apollo-cache-inmemory").InMemoryCache;
 
 const { FDB_ADMIN_KEY: adminKey } = process.env;
 
-/* All HTTP requests must be authenticated with a base-64 digest of your relevant key */
 const digest = Buffer.from(`${adminKey}:`).toString("base64");
 
 /* Create an Apollo Client with the FaunaDB GraphQL endpoint and authorization headers */
@@ -26,7 +33,7 @@ const client = new ApolloClient({
 });
 
 /* Performs a basic mutation */
-const createList = async (title) => {
+const createList = async title => {
   const _res = await client.mutate({
     variables: { title },
     mutation: gql`
@@ -41,4 +48,4 @@ const createList = async (title) => {
   console.log(JSON.stringify(_res.data, null, 2));
 };
 
-createList('My Awesome List');
+createList("My Awesome List");
