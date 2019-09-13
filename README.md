@@ -12,6 +12,6 @@ Familiarizing myself with FaunaDB and hoping to lessen the learning curve for ot
 
 Tasks:
 - [x] Make a script to bootstrap a database
-- [ ] Convert script into a more flexible CLI utility / make better automated tasks
+- [ ] Replace bootstrap scripts with CLI (in progress)
 - [x] Model a basic user authentication flow
 - [ ] **YOUR IDEA HERE :o)**
