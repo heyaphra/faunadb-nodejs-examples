@@ -3,7 +3,7 @@
  *   - Basic example showing use of Apollo/GraphQL with FaunaDB
  * 
  * Prerequisites: 
- *   - Get your database up and running - https://docs.fauna.com/fauna/current/start/graphql#query
+ *   - Get your database up and running - https://docs.fauna.com/fauna/current/start/graphql
  * 
  * Notes:
  *  - All HTTP requests must be authenticated with a base-64 digest of your relevant key
