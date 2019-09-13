@@ -1,6 +1,6 @@
 /**
  * Summary: 
- *   - Basic example showing use of Apollo/GraphQL with FaunaDAB
+ *   - Basic example showing use of Apollo/GraphQL with FaunaDB
  * 
  * Prerequisites: 
  *   - Get your database up and running - https://docs.fauna.com/fauna/current/start/graphql#query
