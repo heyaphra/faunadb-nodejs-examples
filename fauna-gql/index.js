@@ -15,6 +15,7 @@ const gql = require("graphql-tag");
 const ApolloClient = require("apollo-boost").ApolloClient;
 const createHttpLink = require("apollo-link-http").createHttpLink;
 const InMemoryCache = require("apollo-cache-inmemory").InMemoryCache;
+const fetch = require('cross-fetch');
 
 const { FDB_GQL_ADMIN_KEY: adminKey } = process.env;
 
@@ -23,6 +24,7 @@ const digest = Buffer.from(`${adminKey}:`).toString("base64");
 /* Create an Apollo Client with the FaunaDB GraphQL endpoint and authorization headers */
 const client = new ApolloClient({
   link: createHttpLink({
+    fetch,
     uri: "https://graphql.fauna.com/graphql",
     headers: {
       Authorization: `Basic ${digest}`
