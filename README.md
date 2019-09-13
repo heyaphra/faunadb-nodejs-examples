@@ -7,7 +7,7 @@ Familiarizing myself with FaunaDB and hoping to lessen the learning curve for ot
   - Create a databse using fauna shell or the dashboard
   - Create a .env file with `FDB_FQL_ADMIN_KEY=<your admin key>` (and GQL keys, if applicable)
   - `yarn` or `npm install`
-  - Check out some scripts! I recommend looking at fql/auth and fauna-bootstrap first.
+  - Check out some scripts! I recommend looking at fql/auth first
   - To run any script, `node <path/to/script>`
 
 Tasks:

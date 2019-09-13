@@ -3,7 +3,7 @@
  * This script contains functions that use our mock data to perform some common authentication related tasks.
  *
  * Prerequisites:
- * You must have a seeded FaunaDB created using ../bootstrap_db
+ * You must have a seeded FaunaDB created using ./bootstrap
  *
  */
 
@@ -76,4 +76,3 @@ const logout = async () => {
 
 /* Get auth status */
 // validateCredentials('alice@example.com', 'secret_password')
-
