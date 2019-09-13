@@ -1,16 +1,14 @@
-/* Code snippets that might be useful. */
-
 /**
- * Authenticated HTTP Request
+ * Summary: Authenticated HTTP Request
  */
 const axios = require("axios");
 
-const isLoggedIn = async token => {
+const example = async token => {
   const digest = Buffer.from(`${token}:`).toString("base64");
   const opts = {
-    method: "GET",
+    method: '<GET | POST | PUT | DELETE>',
     headers: { Authorization: `Basic ${digest}` },
-    url: "https://db.fauna.com/tokens/self"
+    url: '<fauna endpoint>'
   };
   try {
     const _res = await axios(opts);
@@ -20,4 +18,3 @@ const isLoggedIn = async token => {
   }
 };
 
-isLoggedIn("fnEDYD1I3OACCgNgPUYfEAIK5K9EblR_NAONWKiMfZq3XvF0I2E");
