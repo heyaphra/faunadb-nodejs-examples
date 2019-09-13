@@ -1,3 +1,8 @@
+/**
+ * Summary: Basic example showing use of Apollo/GraphQL with FaunaDAB
+ * Prerequisites: Get your database up and running - https://docs.fauna.com/fauna/current/start/graphql#query
+ */
+
 require("dotenv").config();
 const gql = require("graphql-tag");
 const ApolloClient = require("apollo-boost").ApolloClient;
