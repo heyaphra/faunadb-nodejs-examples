@@ -1,5 +1,6 @@
 /**
- * Summary: Authenticated HTTP Request
+ * Summary: HTTP requests to your database must contain a base-64 digest of the relevant key in the Authorization header.
+ * Prerequisites: A Fauna database with an endpoint.
  */
 const axios = require("axios");
 
