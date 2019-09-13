@@ -3,8 +3,9 @@
  * This script creates a new database testdb with the specified schema and test entry.
  * 
  * Prerequisites: 
- * You must have an FDB_ADMIN_KEY in your .env file. This script takes care of the rest
- * by writing the client and server keys for the new database in your .env file.
+ * You must have an  Fauna database with your admin key stored as FDB_ADMIN_KEY in your .env file. 
+ * This script takes care of the rest by writing the client and server keys for the new database in your .env file.
+ * Make sure to replace 'testdb' with your database name.
  * 
  * TODO: Make into an interactive shell program to add flexibility, prevent overwrites, etc.
  *  

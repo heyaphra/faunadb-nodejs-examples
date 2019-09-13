@@ -17,7 +17,7 @@ const ApolloClient = require("apollo-boost").ApolloClient;
 const createHttpLink = require("apollo-link-http").createHttpLink;
 const InMemoryCache = require("apollo-cache-inmemory").InMemoryCache;
 
-const { FDB_ADMIN_KEY: adminKey } = process.env;
+const { FDB_GQL_ADMIN_KEY: adminKey } = process.env;
 
 const digest = Buffer.from(`${adminKey}:`).toString('base64');
 
