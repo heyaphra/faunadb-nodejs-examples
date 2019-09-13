@@ -4,7 +4,7 @@
  * 
  * Notes:
  *  - All HTTP requests must be authenticated with a base-64 digest of your relevant key
- *  - Alternatively, you can use the Bearer authentication scheme and completely forego base-64 encoding
+ *  - For GraphQL you may use a Bearer authentication scheme
  */
 
 const axios = require("axios");
