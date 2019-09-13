@@ -1,6 +1,9 @@
 /**
  * Summary:
  * This script creates a new database testdb with the specified schema and test entry.
+ * To be honest, this task could be delegated to a bash script, but it's probably useful
+ * in production to have the ability to programmatically provision databases for users.
+ * Let me know what you think!
  *
  * Prerequisites:
  * You must have an  Fauna database with your admin key stored as FDB_ADMIN_KEY in your .env file.

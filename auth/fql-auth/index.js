@@ -60,7 +60,6 @@ const logout = async () => {
   const _client = new faunadb.Client({ secret: "<token>" });
   try {
     const _res = await _client.query(Logout(true));
-    console.log(_res);
   } catch (e) {
     console.log(e);
   }
