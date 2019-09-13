@@ -13,7 +13,7 @@ const faunadb = require("faunadb");
 
 const { Login, Logout, Select, Get, Match, Identify, Index } = faunadb.query;
 
-let client = new faunadb.Client({ secret: process.env.FDB_SERVER_KEY });
+let client = new faunadb.Client({ secret: process.env.FDB_FQL_SERVER_KEY });
 
 const loginWithEmail = async (email, password) => {
   try {
@@ -57,8 +57,9 @@ const logout = async () => {
    * Client must use token generated via login.
    * It's up to you to store it securely.
    * */
+  const _client = new faunadb.Client({ secret: "<token>" });
   try {
-    const _res = await client.query(Logout(true));
+    const _res = await _client.query(Logout(true));
     console.log(_res);
   } catch (e) {
     console.log(e);
@@ -72,7 +73,8 @@ const logout = async () => {
 // findUserByEmail('alice@example.com')
 
 /* Logout */
-// logout()
+logout()
 
 /* Get auth status */
 // validateCredentials('alice@example.com', 'secret_password')
+

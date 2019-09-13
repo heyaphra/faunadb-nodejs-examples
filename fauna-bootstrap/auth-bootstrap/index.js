@@ -48,7 +48,7 @@ const createKeys = async () => {
       CreateKey({ database: Database("testdb"), role: "server" })
     );
     console.log("Created server key");
-    env.FDB_SERVER_KEY = _server.secret;
+    env.FDB_FQL_SERVER_KEY = _server.secret;
   } catch (e) {
     console.log(e);
   }
@@ -57,7 +57,7 @@ const createKeys = async () => {
       CreateKey({ database: Database("testdb"), role: "client" })
     );
     console.log("Created client key");
-    env.FDB_CLIENT_KEY = _client.secret;
+    env.FDB_FQL_CLIENT_KEY = _client.secret;
   } catch (e) {
     console.log(e);
   }
@@ -110,7 +110,7 @@ const setupDB = async () => {
 
 (async () => {
   const db = await setupDB();
-  // const server_client = db.client;
-  // await createSchema(server_client);
-  // await createUsers(server_client);
+  const server_client = db.client;
+  await createSchema(server_client);
+  await createUsers(server_client);
 })();
