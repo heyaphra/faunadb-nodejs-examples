@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "bootstrap_db.js",
+  "bin": {
+    "create-database": "internals/scripts/bin/create-database",
+    "import-gql-schema": "internals/scripts/bin/import-gql-schema"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,6 +24,7 @@
     "faunadb": "^2.8.0",
     "graphql": "^14.5.5",
     "graphql-tag": "^2.10.1",
+    "minimist": "^1.2.0",
     "request": "^2.88.0"
   }
 }
