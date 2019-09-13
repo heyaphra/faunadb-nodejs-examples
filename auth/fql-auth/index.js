@@ -73,7 +73,7 @@ const logout = async () => {
 // findUserByEmail('alice@example.com')
 
 /* Logout */
-logout()
+// logout()
 
 /* Get auth status */
 // validateCredentials('alice@example.com', 'secret_password')
