@@ -65,6 +65,7 @@ module.exports = { Walkthrough };
 
 const createKeys = async () => {
   let _admin, _server, _client;
+  
   try {
     _admin = await client.query(
       CreateKey({ database: Database("testdb"), role: "server" })
@@ -78,5 +79,6 @@ const createKeys = async () => {
   await fs.writeFile("./.env", envfile.stringifySync(env), () =>
     console.log("Published environmental variables")
   );
+
   return { server: _server.secret, client: _client.secret };
 };

@@ -6,10 +6,11 @@ const fs = require("fs");
 const envfile = require("envfile");
 const appRoot = require("app-root-path");
 const { Walkthrough } = require("./main");
+const { askQuestions } = new Walkthrough();
 
 module.exports = async () => {
   checkEnv();
-  new Walkthrough().askQuestions();
+  askQuestions();
 };
 
 const checkEnv = () => {
