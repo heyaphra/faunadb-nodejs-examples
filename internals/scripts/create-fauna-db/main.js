@@ -1,18 +1,8 @@
 const fs = require("fs");
-const faunadb = require("faunadb");
-const {
-  Create,
-  Collection,
-  CreateDatabase,
-  CreateCollection,
-  CreateIndex,
-  CreateKey,
-  Database
-} = faunadb.query;
-
 const ora = require("ora");
 const prompts = require("prompts");
 const questions = require("./questions");
+const { writeToEnv } = require("../utils/env");
 
 class Walkthrough {
   constructor() {
@@ -40,9 +30,9 @@ class Walkthrough {
     const { spinner } = this;
     /* Provision database */
     // spinner(`Creating database: ${config.name}`).start();
-
-    spinner(`Creating keys`).start();
-
+    // spinner(`Creating keys`).start();
+    
+    writeToEnv(config)
     /* Provision keys */
     // for (const key in config.keys) {
     //   console.log(config.keys[key].type)
@@ -62,23 +52,3 @@ class Walkthrough {
 }
 
 module.exports = { Walkthrough };
-
-const createKeys = async () => {
-  let _admin, _server, _client;
-  
-  try {
-    _admin = await client.query(
-      CreateKey({ database: Database("testdb"), role: "server" })
-    );
-    console.log("Created admin key");
-    env.FDB_FQL_ADMIN_KEY = _admin.secret;
-  } catch (e) {
-    console.log(e);
-  }
-
-  await fs.writeFile("./.env", envfile.stringifySync(env), () =>
-    console.log("Published environmental variables")
-  );
-
-  return { server: _server.secret, client: _client.secret };
-};

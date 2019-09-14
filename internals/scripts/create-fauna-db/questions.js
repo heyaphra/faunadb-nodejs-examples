@@ -1,7 +1,7 @@
 const questions = [
   {
     type: "text",
-    name: "name",
+    name: "db",
     message: "Database Name"
   },
   {
@@ -13,7 +13,7 @@ const questions = [
         title: "Admin",
         value: {
           type: "admin",
-          callback: function() {
+          callback: function(name) {
             console.log("Creating key", this.type);
           }
         }
