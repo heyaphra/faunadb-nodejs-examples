@@ -8,17 +8,20 @@
     "import-gql-schema": "internals/scripts/bin/import-gql-schema"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "yarn && cd dashboard && npm install",    
+    "start:fdb": "docker run -d --rm --name faunadb -p 8443:8443 fauna/faunadb",
+    "start:fdb-dash": "cd dashboard && pm2 start npm -- start",    
+    "stop:fdb-dash": "pm2 stop npm",    
+    "add:fdb-endpoint": "fauna add-endpoint",   
+    "list:fdb-endpoints": "fauna list-endpoints",    
+    "set:fdb-endpoint": "fauna default-endpoint",    
+    "bash:fdb-dash": "docker exec -it faunadb /bin/bash"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@apollo/react-hooks": "^3.1.0",
-    "@babel/core": "^7.6.0",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/preset-env": "^7.6.0",
-    "@babel/register": "^7.6.0",
     "apollo-boost": "^0.4.4",
     "apollo-link-context": "^1.0.19",
     "app-root-path": "^2.2.1",
@@ -28,10 +31,10 @@
     "envfile": "^3.0.0",
     "faunadb": "^2.8.0",
     "graphql": "^14.5.5",
-    "graphql-tag": "^2.10.1",
-    "minimist": "^1.2.0",
-    "ora": "^3.4.0",
-    "prompts": "^2.2.1",
-    "request": "^2.88.0"
+    "graphql-tag": "^2.10.1"
+  },
+  "devDependencies": {
+    "fauna-shell": "^0.9.6",
+    "pm2": "^3.5.1"
   }
 }
