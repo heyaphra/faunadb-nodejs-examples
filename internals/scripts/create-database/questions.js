@@ -1,26 +1,8 @@
 const questions = [
   {
     type: "text",
-    name: "dbName",
-    message: "Database Name"
-  },
-  {
-    type: "select",
-    name: "gqlEnabled",
-    message: "Would you to import a GraphQL schema?",
-    choices: [
-      {
-        title: "Yes",
-        description: "Import a GraphQL schema to your new database",
-        value: true
-      },
-      {
-        title: "No",
-        description: "Continue without GraphQL",
-        value: false
-      }
-    ],
-    initial: 0
+    name: "name",
+    message: "Database Name",
   },
   {
     type: "multiselect",
@@ -29,38 +11,38 @@ const questions = [
     choices: [
       {
         title: "Admin",
-        value: true
+        value: async () => await console.log("creating admin key")
       },
       {
         title: "Server",
-        value: false
+        value: async () => await console.log("creating server key")
       },
       {
         title: "Client",
-        value: false
+        value: async () => await console.log("creating client key")
       }
     ]
   },
   {
     type: "select",
-    name: "actions",
+    name: "action",
     message: "What would you like to do?",
     choices: [
       {
+        title: "Import a GraphQL schema",
+        value: () => console.log('importGQLSchema()')
+      },
+      {
         title: "Create a collection",
-        value: true
+        value: () => console.log('createCollection()')
       },
       {
         title: "Create an index",
-        value: true
-      },
-      {
-        title: "Create a child database",
-        value: true
+        value: () => console.log('createIndex()')
       },
       {
         title: "Review and finalize",
-        value: true
+        value: () => console.log('finalize()')
       }
     ],
     initial: 0
