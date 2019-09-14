@@ -3,6 +3,7 @@ const ora = require("ora");
 const prompts = require("prompts");
 const questions = require("./questions");
 const { writeToEnv } = require("../utils/env");
+const { createDB } = require("../utils/fdb");
 
 class Walkthrough {
   constructor() {
@@ -31,8 +32,8 @@ class Walkthrough {
     /* Provision database */
     // spinner(`Creating database: ${config.name}`).start();
     // spinner(`Creating keys`).start();
-    
-    writeToEnv(config)
+    console.log(await createDB(config.db));
+    // writeToEnv(config)
     /* Provision keys */
     // for (const key in config.keys) {
     //   console.log(config.keys[key].type)

@@ -1,23 +1,13 @@
 /**
- * Summary:
- * This script creates a new database testdb with the specified schema and test entry.
- * To be honest, this task could be delegated to a bash script, but it's probably useful
- * in production to have the ability to programmatically provision databases for users.
- * Let me know what you think!
  *
- * Prerequisites:
- * You must have an  Fauna database with your admin key stored as FDB_ADMIN_KEY in your .env file.
- * This script takes care of the rest by writing the client and server keys for the new database in your .env file.
- * Make sure to replace 'testdb' with your database name.
- *
- * TODO: Make into an interactive shell program to add flexibility, prevent overwrites, etc.
+ * TODO: PROMISIFY CHILD PROCESS AND REFACTOR TO UTILIZE FAUNA SHELL INSTEAD OF NODE DRIVER
  *
  */
 
 require("dotenv").config();
 
 const fs = require("fs");
-
+const { spawn } = require("child_process");
 const envfile = require("envfile");
 
 const faunadb = require("faunadb");
@@ -33,10 +23,19 @@ const {
 
 let client = new faunadb.Client({ secret: process.env.FDB_FQL_ADMIN_KEY });
 
-const createDB = async () => {
+const createDB = async name => {
   try {
-    const _db = await client.query(CreateDatabase({ name: "testdb2" }));
-    console.log("New DB created:", _db);
+    if (!name) return false;
+    const cps = spawn("fauna", ["create-database", name]);
+    cps.stdout.on("data", data => {
+      // console.log(`Provisioning database ${name}...`);
+      console.log(data.toString());
+    });
+    cps.stderr.on("data", err => {
+      console.log(err.toString());
+      cps.kill('SIGINT');
+      return false;
+    });
   } catch (e) {
     console.log(e);
   }
@@ -86,5 +85,4 @@ const createCollection = async function(client) {
 //   };
 // };
 // createKey('testdb', 'admin');
-createDB()
-module.exports = { createKey };
+module.exports = { createDB, createKey };
