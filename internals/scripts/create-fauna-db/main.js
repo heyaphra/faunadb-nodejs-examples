@@ -9,18 +9,10 @@ const {
   CreateKey,
   Database
 } = faunadb.query;
-const appRoot = require("app-root-path");
 
 const ora = require("ora");
 const prompts = require("prompts");
 const questions = require("./questions");
-const envfile = require("envfile");
-
-const envPath = appRoot + "/.env";
-let env = fs.existsSync(envPath);
-if (!env) {
-  fs.writeFileSync(envPath);
-}
 
 class Walkthrough {
   constructor() {
