@@ -4,7 +4,7 @@
   "description": "",
   "main": "bootstrap_db.js",
   "bin": {
-    "create-database": "internals/scripts/bin/create-database",
+    "create-fauna-db": "internals/scripts/bin/create-fauna-db",
     "import-gql-schema": "internals/scripts/bin/import-gql-schema"
   },
   "scripts": {

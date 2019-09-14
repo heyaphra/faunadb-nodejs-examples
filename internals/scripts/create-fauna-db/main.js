@@ -6,8 +6,8 @@ class Walkthrough {
     this.askQuestions = this.askQuestions.bind(this);
     this.exec = this.exec.bind(this);
     this.setup = this.setup.bind(this);
-    this.selectAction = this.selectAction.bind(this);
     this.setConfig = this.setConfig.bind(this);
+    this.selectAction = this.selectAction.bind(this);
   }
   async setConfig() {
     const _setup = questions.slice(0, 2);
