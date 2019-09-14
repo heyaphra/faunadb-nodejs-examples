@@ -30,22 +30,14 @@ class Walkthrough {
   async setup(config) {
     const { spinner } = this;
     /* Provision database */
-    // spinner(`Creating database: ${config.name}`).start();
-    // spinner(`Creating keys`).start();
-    console.log(await createDB(config.db));
-    // writeToEnv(config)
+    /* Write to env */    
     /* Provision keys */
-    // for (const key in config.keys) {
-    //   console.log(config.keys[key].type)
-    //   // await config.keys[key]();
-    // }
   }
   async askQuestions() {
     const { setup, exec } = this;
 
     const _config = await this.setConfig();
     await setup(_config);
-    // spinner.stop()
 
     const _action = await this.selectAction();
     await exec(_action);

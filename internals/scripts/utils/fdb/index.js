@@ -26,16 +26,7 @@ let client = new faunadb.Client({ secret: process.env.FDB_FQL_ADMIN_KEY });
 const createDB = async name => {
   try {
     if (!name) return false;
-    const cps = spawn("fauna", ["create-database", name]);
-    cps.stdout.on("data", data => {
-      // console.log(`Provisioning database ${name}...`);
-      console.log(data.toString());
-    });
-    cps.stderr.on("data", err => {
-      console.log(err.toString());
-      cps.kill('SIGINT');
-      return false;
-    });
+   
   } catch (e) {
     console.log(e);
   }
