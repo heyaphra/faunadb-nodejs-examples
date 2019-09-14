@@ -2,7 +2,7 @@ const questions = [
   {
     type: "text",
     name: "name",
-    message: "Database Name",
+    message: "Database Name"
   },
   {
     type: "multiselect",
@@ -11,15 +11,30 @@ const questions = [
     choices: [
       {
         title: "Admin",
-        value: async () => await console.log("creating admin key")
+        value: {
+          type: "admin",
+          callback: function() {
+            console.log("Creating key", this.type);
+          }
+        }
       },
       {
         title: "Server",
-        value: async () => await console.log("creating server key")
+        value: {
+          type: "server",
+          callback: function() {
+            console.log("Creating key", this.type);
+          }
+        }
       },
       {
         title: "Client",
-        value: async () => await console.log("creating client key")
+        value: {
+          type: "client",
+          callback: function() {
+            console.log("Creating key", this.type);
+          }
+        }
       }
     ]
   },
@@ -30,19 +45,19 @@ const questions = [
     choices: [
       {
         title: "Import a GraphQL schema",
-        value: () => console.log('importGQLSchema()')
+        value: () => console.log("importGQLSchema()")
       },
       {
         title: "Create a collection",
-        value: () => console.log('createCollection()')
+        value: () => console.log("createCollection()")
       },
       {
         title: "Create an index",
-        value: () => console.log('createIndex()')
+        value: () => console.log("createIndex()")
       },
       {
         title: "Review and finalize",
-        value: () => console.log('finalize()')
+        value: () => console.log("finalize()")
       }
     ],
     initial: 0

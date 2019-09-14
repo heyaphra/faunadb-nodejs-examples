@@ -1,8 +1,30 @@
+const fs = require("fs");
+const faunadb = require("faunadb");
+const {
+  Create,
+  Collection,
+  CreateDatabase,
+  CreateCollection,
+  CreateIndex,
+  CreateKey,
+  Database
+} = faunadb.query;
+const appRoot = require("app-root-path");
+
+const ora = require("ora");
 const prompts = require("prompts");
 const questions = require("./questions");
+const envfile = require("envfile");
+
+const envPath = appRoot + "/.env";
+let env = fs.existsSync(envPath);
+if (!env) {
+  fs.writeFileSync(envPath);
+}
 
 class Walkthrough {
   constructor() {
+    this.spinner = text => ora(text);
     this.askQuestions = this.askQuestions.bind(this);
     this.exec = this.exec.bind(this);
     this.setup = this.setup.bind(this);
@@ -23,19 +45,24 @@ class Walkthrough {
     action();
   }
   async setup(config) {
+    const { spinner } = this;
     /* Provision database */
-    console.log('Creating database:', config.name);
+    // spinner(`Creating database: ${config.name}`).start();
+
+    spinner(`Creating keys`).start();
 
     /* Provision keys */
-    for(const key in config.keys) {
-      await config.keys[key]()
-    }
+    // for (const key in config.keys) {
+    //   console.log(config.keys[key].type)
+    //   // await config.keys[key]();
+    // }
   }
   async askQuestions() {
     const { setup, exec } = this;
 
     const _config = await this.setConfig();
     await setup(_config);
+    // spinner.stop()
 
     const _action = await this.selectAction();
     await exec(_action);
@@ -43,3 +70,21 @@ class Walkthrough {
 }
 
 module.exports = { Walkthrough };
+
+const createKeys = async () => {
+  let _admin, _server, _client;
+  try {
+    _admin = await client.query(
+      CreateKey({ database: Database("testdb"), role: "server" })
+    );
+    console.log("Created admin key");
+    env.FDB_FQL_ADMIN_KEY = _admin.secret;
+  } catch (e) {
+    console.log(e);
+  }
+
+  await fs.writeFile("./.env", envfile.stringifySync(env), () =>
+    console.log("Published environmental variables")
+  );
+  return { server: _server.secret, client: _client.secret };
+};
