@@ -48,7 +48,7 @@ class Routing {
   }
 
   _addtodo(req, res) {
-    res.send(JSON.stringify(`Creating todo`));
+    res.send(JSON.stringify({ msg: "adding todo" }));
     // const data = await request(gql_endpoint, query, { title });
   }
 
