@@ -32,6 +32,7 @@
     "envfile": "^3.0.0",
     "faunadb": "^2.8.0",
     "graphql": "^14.5.5",
+    "graphql-request": "^1.8.2",
     "graphql-tag": "^2.10.1"
   },
   "devDependencies": {
