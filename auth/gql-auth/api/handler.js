@@ -41,15 +41,15 @@ class Routing {
   bind(route) {
     const { _signup, _login, _update, _delete, _addtodo } = this;
     this.app.post("/signup", _signup);
-    this.app.post("/addtodo", _addtodo);
+    this.app.post("/addtodo/:title", _addtodo);
     this.app.get("/login", _login);
     this.app.patch("/update", _update);
     this.app.delete("/delete", _delete);
   }
 
   _addtodo(req, res) {
-    res.send(JSON.stringify({ msg: "adding todo" }));
-    // const data = await request(gql_endpoint, query, { title });
+    const data = await request(gql_endpoint, query, { title });
+    res.send(JSON.stringify(`Creating todo: ${req.params.title} ... Check your database! ${data}`));
   }
 
   _signup(req, res) {
