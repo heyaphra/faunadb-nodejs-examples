@@ -8,10 +8,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "dotenv": "^8.1.0",
-    "graphql-request": "^1.8.2",
-    "graphql-tag": "^2.10.1"
-  }
+  "license": "ISC"
 }
